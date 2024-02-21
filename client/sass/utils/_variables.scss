@@ -1,0 +1,32 @@
+@use "sass:math";
+// Colors variables
+$color-primary: #9356dc;
+$color-secondary: #e270da;
+$ticket-background-color: #99e2d0;
+$ticket-text-color: #088c6c;
+$color-animation: #96e8ca;
+$grey-background1: #e9e9e9;
+$grey-background2: #f6f6f6;
+$footer-background: #353535;
+$background-link-active: #f5edff;
+$shadow-color1: #d1d1d0;
+
+/*Spacing section*/
+$border-topic: 5vw;
+$topic-bd-radius: 3vw;
+$topic-height: 16vw;
+$price-width: 30%;
+
+/*animation timings section*/
+$on-hover-anim-duration: 0.3s;
+$n: 1; //n is the number of childs before the first topic
+// here is one because there is an h2 title preceding the first topic ("entrees" or "plats" or "dessert")
+$topic-anim-duration: 0.85s;
+$topic-anim-delay: 0.25s;
+$entrees-topics-number: 3;
+$entrees-anim-time: (($entrees-topics-number - 1) * $topic-anim-delay) +
+  math.div($topic-anim-duration, 2);
+
+$plats-topics-number: 3;
+$plats-anim-time: (($plats-topics-number - 1) * $topic-anim-delay) +
+  math.div($topic-anim-duration, 2);

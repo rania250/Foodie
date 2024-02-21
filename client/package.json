@@ -1,0 +1,15 @@
+{
+  "name": "ohmyfood",
+  "version": "1.0.0",
+  "description": "ohmyfood Restaurant website",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/main.css --style expanded",
+    "prefix": "postcss ./css/main.css --use autoprefixer -d ./css/prefixed",
+    "updateBrowserList": "npx browserslist@latest --update-db"
+  },
+  "author": "Nacer Mamou",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "dependencies": {}
+}

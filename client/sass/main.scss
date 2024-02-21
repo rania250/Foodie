@@ -1,0 +1,55 @@
+// This main file decribes the architecture of each page
+@import "./utils/variables";
+@import "./base/typography";
+
+@import "./components/buttons";
+@import "./components/loaders.scss";
+
+@import "./layout/header";
+@import "./layout/footer";
+
+// Importing all the partials of the homepage
+@import "./pages/home-page";
+
+// Architecture of the Home page
+// Header and footer are already imported above
+
+/****Header*****/
+#loader {
+  @include hompepageLoader;
+}
+
+#fonctionnement {
+  @include fonctionnementStyle;
+}
+
+#restaurants {
+  @include restaurantsStyle;
+}
+/***Footer***/
+
+// Importing all the partials of the restaurant page
+@import "./pages/restaurant-page";
+
+// Architecture of the restaurant page
+// Header and footer are already imported above
+
+/*****Header****/
+
+// use false instead of true in the foodcontainer call
+//This eliminates the delay between containers
+//The topics loading in the three containers will start simultainously
+#list {
+  @include listStyle;
+  .entrees {
+    @include foodContainer("entrees", 9%);
+  }
+  .plats {
+    @include foodContainer("plats", 7%, true);
+  }
+  .desserts {
+    @include foodContainer("desserts", 12%, true);
+  }
+  @include buttonOrder;
+}
+/****Footer****/

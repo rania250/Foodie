@@ -1,0 +1,483 @@
+@use "sass:math";
+
+@mixin listStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $grey-background2;
+  border-radius: 10vw 10vw 0 0;
+  padding-top: 5vw;
+  margin-top: -14vw;
+  width: 100%;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    width: 92%;
+    align-items: center;
+
+    & h1 {
+      display: flex;
+      align-items: center;
+      font-family: "Shrikhand", sans-serif;
+      font-size: 6.8vw;
+      padding-left: 2.5vw;
+    }
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 8vw;
+      width: 9%;
+      &__container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        & .layer1 {
+          position: absolute;
+          top: 0.8vw;
+          left: 1vw;
+          color: black;
+          z-index: -1;
+          font-size: 6vw;
+          transition: all 0.5s linear;
+        }
+        & .layer0 {
+          position: absolute;
+          top: 0.8vw;
+          left: 1vw;
+          color: black;
+          font-size: 6vw;
+          transition: all 0.5s linear;
+        }
+      }
+      &__container:hover {
+        @include iconHoverEffect;
+      }
+    }
+  }
+
+  @media all and (min-width: 576px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-radius: 5vw 5vw 0 0;
+    padding: 1vw 3vw;
+    margin-top: -5vw;
+    width: 100%;
+    height: auto;
+    .title {
+      width: 100%;
+      align-items: center;
+      & h1 {
+        font-size: 4.8vw;
+        padding: 1vw 0;
+      }
+      &__icon {
+        height: 5vw;
+        width: 7%;
+        &__container {
+          & .layer1 {
+            top: 0vw;
+            left: 1vw;
+            font-size: 4.2vw;
+          }
+          & .layer0 {
+            top: 0vw;
+            left: 1vw;
+            font-size: 4.2vw;
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1025px) {
+    align-items: flex-start;
+    border-radius: 2.5vw 2.5vw 0 0;
+    padding: 2vw 7vw;
+    margin-top: -6vw;
+    .title {
+      & h1 {
+        font-size: 2.2vw;
+        padding: 0vw 0;
+      }
+      &__icon {
+        height: 2.7vw;
+        width: 4%;
+        &__container {
+          & .layer1 {
+            top: 0.1vw;
+            left: 0.6vw;
+            font-size: 2.2vw;
+          }
+          & .layer0 {
+            top: 0.1vw;
+            left: 0.6vw;
+            font-size: 2.2vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+    transform: translateY(15%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+    visibility: visible;
+  }
+}
+
+@mixin foodContainer(
+  $name: "entrees",
+  $titleUnderlineWidth: 9%,
+  $foodContainerDelay: false
+) {
+  display: flex;
+  flex-direction: column;
+  width: 92%;
+  padding-top: 5vw;
+  & h2 {
+    font-size: 3.8vw;
+    color: grey;
+    padding-bottom: 4.5vw;
+    position: relative;
+    font-weight: 400;
+  }
+  & h2::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    border-top: 0.7vw solid $color-animation;
+    top: 60%;
+    left: 0%;
+    @if $name == "entrees" {
+      width: 9%;
+    }
+    @if $name == "plats" {
+      width: 7%;
+    }
+    @if $name == "desserts" {
+      width: 10%;
+    }
+  }
+
+  &--topic {
+    display: flex;
+    width: 100%;
+    height: $topic-height;
+    margin-bottom: 2vw;
+    background-color: white;
+    border-radius: $topic-bd-radius;
+    overflow: hidden;
+    animation: loading $topic-anim-duration linear 1 forwards;
+    // animation-fill-mode: forwards;
+    visibility: hidden;
+    box-shadow: 0vw 0vw 1vw $shadow-color1;
+
+    &:nth-child(n + 1) {
+      @if ($foodContainerDelay) and ($name == "plats") {
+        animation-delay: $entrees-anim-time;
+      } @else if ($foodContainerDelay) and ($name == "desserts") {
+        animation-delay: $entrees-anim-time + $plats-anim-time;
+      } @else {
+        animation-delay: ($topic-anim-delay * 0);
+      }
+    }
+
+    &:nth-child(n + 2) {
+      @if ($foodContainerDelay) and ($name == "plats") {
+        animation-delay: $entrees-anim-time + ($topic-anim-delay * 1);
+      } @else if ($foodContainerDelay) and ($name == "desserts") {
+        animation-delay: $entrees-anim-time +
+          $plats-anim-time +
+          ($topic-anim-delay * 1);
+      } @else {
+        animation-delay: ($topic-anim-delay * 1);
+      }
+    }
+
+    &:nth-child(n + 3) {
+      @if ($foodContainerDelay) and ($name == "plats") {
+        animation-delay: $entrees-anim-time + ($topic-anim-delay * 2);
+      } @else if ($foodContainerDelay) and ($name == "desserts") {
+        animation-delay: $entrees-anim-time +
+          $plats-anim-time +
+          ($topic-anim-delay * 2);
+      } @else {
+        animation-delay: ($topic-anim-delay * 2);
+      }
+    }
+
+    &:nth-child(n + 4) {
+      @if ($foodContainerDelay) and ($name == "plats") {
+        animation-delay: $entrees-anim-time + ($topic-anim-delay * 3);
+      } @else if ($foodContainerDelay) and ($name == "desserts") {
+        animation-delay: $entrees-anim-time +
+          $plats-anim-time +
+          ($topic-anim-delay * 3);
+      } @else {
+        animation-delay: ($topic-anim-delay * 3);
+      }
+    }
+
+    &--presentation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 3vw;
+      width: 80%;
+      transition: all $on-hover-anim-duration ease-in-out;
+      & h3 {
+        display: block;
+        font-size: 3.9vw;
+        margin-bottom: 0.8vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      & p {
+        display: block;
+        font-size: 3.5vw;
+        color: gray;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+    &--price {
+      border-radius: 0 4vw 4vw 0;
+      display: flex;
+      align-items: center;
+      width: $price-width;
+      color: black;
+      width: 20%;
+      height: 100%;
+      font-weight: bold;
+      transform: translateX(20%);
+      transition: all $on-hover-anim-duration ease-in-out;
+      & span {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 2vw;
+        padding-right: 15vw;
+        font-size: 4vw;
+        transform: translateX(0%);
+        transition: all $on-hover-anim-duration ease-in-out;
+      }
+      &--back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 0%;
+        height: 100%;
+        background-color: $color-animation;
+        transition: all $on-hover-anim-duration ease-in-out;
+        & i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 9vw;
+          color: $color-animation;
+          color: white;
+          background: transparent;
+          transform: rotate(-1300deg) scale(0.25);
+          transition: all $on-hover-anim-duration ease-in-out;
+        }
+      }
+    }
+    &:hover .#{$name}--topic--presentation {
+      width: 65%;
+    }
+    &:hover .#{$name}--topic--price {
+      width: 35%;
+      transform: translateX(0%);
+      & span {
+        width: 30%;
+        transform: translateX(0%);
+        padding-right: 2vw;
+        padding-bottom: 2vw;
+      }
+      & .#{$name}--topic--price--back {
+        width: 70%;
+        background-color: $color-animation;
+        & i {
+          color: white;
+          background-color: $color-animation;
+          transform: rotate(0deg) scale(1);
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 576px) {
+    width: 49%;
+    @if $name == "desserts" {
+      width: 100%;
+    }
+    padding: 2vw 0vw;
+    & h2 {
+      font-size: 2.5vw;
+      padding-bottom: 2.5vw;
+      position: relative;
+      font-weight: 400;
+    }
+    & h2::after {
+      border-top: 0.45vw solid $color-animation;
+      top: 65%;
+      @if $name == "entrees" {
+        width: 12.5%;
+      }
+      @if $name == "plats" {
+        width: 8.5%;
+      }
+      @if $name == "desserts" {
+        width: 6.8%;
+      }
+    }
+    &--topic {
+      width: 100%;
+      height: 8vw;
+      margin-bottom: 1vw;
+      border-radius: 1.2vw;
+      box-shadow: 0vw 0vw 0.5vw $shadow-color1;
+      &--presentation {
+        padding-left: 2vw;
+        width: 80%;
+        & h3 {
+          font-size: 2.5vw;
+        }
+        & p {
+          font-size: 2vw;
+        }
+      }
+      &--price {
+        width: 20%;
+        transform: translateX(40%);
+        @if $name == "desserts" {
+          transform: translateX(20%);
+        }
+        & span {
+          width: 100%;
+          font-size: 2vw;
+          padding-bottom: 1vw;
+          padding-right: 6vw;
+        }
+        &--back {
+          width: 0%;
+          & i {
+            font-size: 4vw;
+          }
+        }
+      }
+      &:hover .#{$name}--topic--presentation {
+        width: 65%;
+        @if $name == "desserts" {
+          width: 82.3%;
+        }
+      }
+      &:hover .#{$name}--topic--price {
+        width: 35%;
+        @if $name == "desserts" {
+          width: 17.7%;
+        }
+        & span {
+          padding-right: 0.5vw;
+          padding-bottom: 1vw;
+          width: 35%;
+          @if $name == "desserts" {
+            width: 35%;
+          }
+        }
+        & .#{$name}--topic--price--back {
+          width: 65%;
+          @if $name == "desserts" {
+            width: 65%;
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1025px) {
+    width: 31%;
+    padding: 1vw 0vw;
+    & h2 {
+      font-size: 1.1vw;
+      padding-bottom: 1.3vw;
+      position: relative;
+      font-weight: 400;
+    }
+    & h2::after {
+      border-top: 0.2vw solid $color-animation;
+      top: 58%;
+      @if $name == "entrees" {
+        width: 9%;
+      }
+      @if $name== "plats" {
+        width: 6.5%;
+      }
+      @if $name == "desserts" {
+        width: 10%;
+      }
+    }
+
+    &--topic {
+      height: 4vw;
+      margin-bottom: 1vw;
+      border-radius: 0.6vw;
+      box-shadow: 0vw 0vw 0.2vw $shadow-color1;
+      &--presentation {
+        padding-left: 1vw;
+        width: 80%;
+        & h3 {
+          font-size: 1.2vw;
+          margin-bottom: 0vw;
+        }
+        & p {
+          font-size: 1vw;
+        }
+      }
+      &--price {
+        width: 20%;
+        transform: translateX(40%);
+        & span {
+          font-size: 1vw;
+          padding-bottom: 0.5vw;
+          padding-right: 3.2vw;
+        }
+        &--back {
+          width: 0%;
+          & i {
+            font-size: 2vw;
+          }
+        }
+      }
+      &:hover .#{$name}--topic--presentation {
+        width: 70%;
+      }
+      &:hover .#{$name}--topic--price {
+        width: 30%;
+        & span {
+          padding-right: 0.5vw;
+          padding-bottom: 0.6vw;
+          width: 35%;
+        }
+        & .#{$name}--topic--price--back {
+          width: 65%;
+          background-color: $color-animation;
+        }
+      }
+    }
+  }
+}

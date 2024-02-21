@@ -1,0 +1,246 @@
+@mixin headerLargeStyle {
+  .logo-container {
+    padding: 0.1vw 0;
+    &__larrow {
+      font-size: 2vw;
+      width: 5.5%;
+    }
+    &__text {
+      font-size: 2.2vw;
+    }
+  }
+  .search {
+    border-top: 0.15vw solid gainsboro;
+    &__form {
+      width: 25%;
+    }
+    & i {
+      width: 20%;
+      font-size: 1vw;
+      padding: 0.7vw 0;
+    }
+    & input {
+      padding: 0.5vw 0;
+      font-size: 1vw;
+      font-weight: 500;
+    }
+    & input::placeholder {
+      font-size: 1vw;
+    }
+  }
+  .exploration {
+    flex-direction: column;
+    padding: 2.5vw 7vw;
+    flex-wrap: wrap;
+    position: relative;
+    & h1 {
+      justify-content: flex-start;
+      font-size: 1.8vw;
+      padding: 0;
+      margin: 0;
+    }
+    & p {
+      justify-content: flex-start;
+      font-size: 1.2vw;
+      width: 100.5%;
+      margin: 0;
+    }
+    & button {
+      position: absolute;
+      top: 27%;
+      right: 8vw;
+      font-size: 1vw;
+      padding: 0.8vw 0vw;
+      width: 13.5%;
+    }
+  }
+  .img {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+  }
+}
+@mixin headerMediumStyle {
+  .logo-container {
+    padding: 1vw 0;
+    &__larrow {
+      font-size: 4vw;
+      width: 10%;
+    }
+    &__text {
+      font-size: 4.5vw;
+    }
+  }
+  .search {
+    border-top: 0.25vw solid gainsboro;
+    &__form {
+      width: 50%;
+    }
+    & i {
+      width: 20%;
+      font-size: 2.8vw;
+      padding: 2vw 0;
+    }
+    & input {
+      padding: 1.5vw 0;
+      font-size: 3vw;
+      font-weight: 500;
+    }
+    & input::placeholder {
+      font-size: 3vw;
+    }
+  }
+
+  .exploration {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3vw 0;
+    flex-wrap: wrap;
+    & h1 {
+      font-size: 3.5vw;
+      margin-bottom: 2vw;
+    }
+    & p {
+      font-size: 2.5vw;
+      width: 45%;
+      margin-bottom: 0;
+    }
+    & button {
+      font-size: 2.2vw;
+      padding: 2vw;
+      width: 30%;
+    }
+  }
+  .img {
+    width: 100%;
+    height: 45vw;
+  }
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .logo-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 2vw 0;
+    width: 100%;
+    &__larrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 15%;
+      color: black;
+      position: absolute;
+      left: 0;
+      font-size: 6vw;
+      text-decoration: none;
+    }
+    &__text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 7.5vw;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+  }
+  // Styling the search section for the home page
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: $grey-background1;
+    border-top: 0.6vw solid gainsboro;
+    // box-shadow: 0vw 0vw 1vw grey;
+    &__form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 55%;
+      background-color: $grey-background1;
+    }
+    & i {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20%;
+      font-size: 4.5vw;
+    }
+    & input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      padding: 3.3vw 0;
+      outline: none;
+      border: none;
+      appearance: none;
+      background-color: $grey-background1;
+      font-size: 4.2vw;
+      font-weight: 500;
+    }
+    & input::placeholder {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      color: black;
+      font-size: 4.2vw;
+      font-weight: 400;
+    }
+  }
+  // Styling the exploration section for the home page
+  .exploration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $grey-background2;
+    padding-top: 7vw;
+    padding-bottom: 11vw;
+    & h1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 5.5vw;
+      width: 67%;
+      font-weight: bold;
+      margin-bottom: 4vw;
+    }
+    & p {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      font-size: 3.8vw;
+      width: 82%;
+      color: grey;
+      margin-bottom: 7vw;
+    }
+    & button {
+      @include explorationButton;
+    }
+  }
+  // Styling the header image for restaurant pageq
+  .img {
+    display: flex;
+    width: 100%;
+    height: 72vw;
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  @media all and(min-width: 576px) {
+    @include headerMediumStyle;
+  }
+  @media all and(min-width: 1025px) {
+    @include headerLargeStyle;
+  }
+}

@@ -1,0 +1,459 @@
+@mixin fonctionnementStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 11vw;
+  padding-bottom: 10vw;
+  width: 100%;
+  & h2 {
+    font-size: 6.5vw;
+    font-weight: bold;
+    padding-left: 5vw;
+    margin-bottom: 4vw;
+    width: 100%;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 87%;
+    z-index: 0;
+    &__link {
+      display: flex;
+      position: relative;
+      align-items: center;
+      width: 100%;
+      background-color: $grey-background2;
+      color: black;
+      margin-bottom: 3vw;
+      height: 17.5vw;
+      font-size: 4.5vw;
+      font-weight: 600;
+      border-radius: 5vw;
+      box-shadow: 0.8vw 0.8vw 2vw $shadow-color1;
+      text-decoration: none;
+      z-index: 0;
+      &__info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: $color-primary;
+        color: white;
+        border-radius: 50%;
+        height: 8vw;
+        width: 8vw;
+        font-size: 4vw;
+        top: 30%;
+        left: -3.5vw;
+        z-index: 0;
+      }
+      & i {
+        display: flex;
+        align-items: center;
+        font-size: 5vw;
+        color: black;
+        opacity: 0.7;
+        padding-left: 10vw;
+        padding-right: 3vw;
+        height: 100%;
+      }
+    }
+    &__link--active {
+      display: flex;
+      position: relative;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 4.5vw;
+      height: 19vw;
+      font-size: 4.5vw;
+      font-weight: 600;
+      border-radius: 5vw;
+      box-shadow: 0.8vw 0.8vw 2vw $shadow-color1;
+      text-decoration: none;
+      color: black;
+      background-color: $background-link-active;
+      &__info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: $color-primary;
+        color: white;
+        border-radius: 50%;
+        height: 8vw;
+        width: 8vw;
+        font-size: 4vw;
+        top: 30%;
+        left: -3.5vw;
+      }
+      & i {
+        display: flex;
+        align-items: center;
+        font-size: 5vw;
+        color: black;
+        color: $color-primary;
+        opacity: 0.7;
+        padding-left: 10vw;
+        padding-right: 3vw;
+        height: 100%;
+      }
+    }
+  }
+  @media all and (min-width: 576px) {
+    padding: 4vw 3vw;
+    & h2 {
+      font-size: 3.5vw;
+      padding-left: 0vw;
+      margin-bottom: 1.5vw;
+      width: 100%;
+    }
+    .menu {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      &__link {
+        width: 30.5%;
+        margin-bottom: 0vw;
+        font-size: 2vw;
+        border-radius: 2vw;
+        height: 9vw;
+        &__info {
+          font-size: 2vw;
+          top: 30%;
+          left: -2vw;
+          height: 4vw;
+          width: 4vw;
+        }
+        & i {
+          font-size: 2.2vw;
+          padding-left: 4vw;
+          padding-right: 1vw;
+        }
+      }
+      &__link--active {
+        width: 30.5%;
+        margin-bottom: 0vw;
+        font-size: 2vw;
+        border-radius: 2vw;
+        height: 9vw;
+        &__info {
+          font-size: 2vw;
+          top: 30%;
+          left: -2vw;
+          height: 4vw;
+          width: 4vw;
+        }
+        & i {
+          font-size: 2.2vw;
+          padding-left: 4vw;
+          padding-right: 1vw;
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 1025px) {
+    padding: 2vw 7vw;
+    & h2 {
+      font-size: 2vw;
+      padding-left: 0vw;
+      margin-bottom: 0.6vw;
+      width: 100%;
+    }
+    .menu {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      &__link {
+        width: 30.5%;
+        margin-bottom: 0vw;
+        font-size: 1.2vw;
+        border-radius: 0.8vw;
+        height: 5vw;
+
+        &__info {
+          font-size: 1.3vw;
+          top: 27%;
+          left: -1.4vw;
+          height: 2.5vw;
+          width: 2.5vw;
+        }
+        & i {
+          font-size: 1.5vw;
+          padding-left: 2.8vw;
+          padding-right: 1vw;
+        }
+      }
+      &__link--active {
+        width: 30.5%;
+        margin-bottom: 0vw;
+        font-size: 1.2vw;
+        border-radius: 0.8vw;
+        height: 5vw;
+        &__info {
+          font-size: 1.3vw;
+          top: 27%;
+          left: -1.4vw;
+          height: 2.5vw;
+          width: 2.5vw;
+        }
+        & i {
+          font-size: 1.5vw;
+          padding-left: 2.8vw;
+          padding-right: 1vw;
+        }
+      }
+    }
+  }
+}
+
+@mixin restaurantsStyle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 11vw;
+  padding-bottom: 10vw;
+  background-color: $grey-background2;
+  & h2 {
+    width: 100%;
+    padding-left: 5vw;
+    font-size: 6.5vw;
+    font-weight: bold;
+    margin-bottom: 5vw;
+  }
+  .presentation {
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+    height: 280vw;
+    &__topic {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 65vw;
+      border-radius: $border-topic;
+      margin-bottom: 5vw;
+      text-decoration: none;
+      box-shadow: 0.5vw 0.5vw 0.2vw $shadow-color1;
+      &.new::before {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        content: "Nouveau";
+        padding: 1.5vw 2.5vw;
+        border-radius: 1vw;
+        position: absolute;
+        background-color: $ticket-background-color;
+        color: $ticket-text-color;
+        width: 18%;
+        height: 5vw;
+        right: 10%;
+        margin-top: 3.5vw;
+        font-size: 4vw;
+      }
+      & img {
+        display: flex;
+        width: 100%;
+        height: 70%;
+        border-radius: $border-topic $border-topic 0vw 0vw;
+        object-fit: cover;
+      }
+      &__header {
+        display: flex;
+        align-items: center;
+        height: 30%;
+        &__text {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          height: 100%;
+          background-color: white;
+          border-radius: 0 0 0 $border-topic;
+          padding-left: 4vw;
+          padding-top: 4vw;
+          & h3 {
+            font-size: 5vw;
+            color: black;
+          }
+          & p {
+            font-size: 4.8vw;
+            color: black;
+            font-weight: 100;
+          }
+        }
+        &__icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 25%;
+          height: 100%;
+          background-color: white;
+          border-radius: 0 0 $border-topic 0;
+          &__container {
+            display: flex;
+            position: relative;
+            width: 40%;
+            height: 40%;
+            & .layer1 {
+              position: absolute;
+              top: 0.5vw;
+              left: 1vw;
+              color: black;
+              z-index: -1;
+              font-size: 6vw;
+              transition: all 0.5s linear;
+            }
+            & .layer0 {
+              position: absolute;
+              top: 0.5vw;
+              left: 1vw;
+              color: black;
+              font-size: 6vw;
+              transition: all 0.5s linear;
+            }
+          }
+          &__container:hover {
+            @include iconHoverEffect;
+          }
+        }
+      }
+    }
+  }
+
+  @media all and (min-width: 576px) {
+    width: 100%;
+    padding: 4vw 3vw;
+    & h2 {
+      padding-left: 0vw;
+      font-size: 3.5vw;
+      margin-bottom: 1.5vw;
+    }
+    .presentation {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 2vw;
+      height: auto;
+      &__topic {
+        position: relative;
+        width: 47%;
+        height: 30vw;
+        margin-bottom: 3vw;
+        border-radius: 3vw;
+        box-shadow: 0.3vw 0.3vw 0.1vw $shadow-color1;
+        &.new::before {
+          padding: 0vw 2.5vw;
+          height: 13.5%;
+          border-radius: 1vw;
+          right: 5%;
+          margin-top: 1.5vw;
+          font-size: 2.1vw;
+        }
+        & img {
+          border-radius: 3vw 3vw 0vw 0vw;
+        }
+        &__header {
+          &__text {
+            width: 80%;
+            border-radius: 0 0 0 3vw;
+            padding: 1.3vw 2vw;
+            & h3 {
+              font-size: 3vw;
+            }
+            & p {
+              font-size: 2.4vw;
+            }
+          }
+          &__icon {
+            border-radius: 0 0 3vw 0;
+            &__container {
+              width: 45%;
+              height: 45%;
+              & .layer1 {
+                top: 0.2vw;
+                left: 0.5vw;
+                font-size: 3.3vw;
+              }
+              & .layer0 {
+                top: 0.2vw;
+                left: 0.5vw;
+                font-size: 3.3vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1025px) {
+    width: 100%;
+    padding: 2.5vw 7vw;
+    & h2 {
+      padding-left: 0vw;
+      font-size: 2vw;
+      margin-bottom: 1.4vw;
+    }
+    .presentation {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0 0vw;
+      height: auto;
+      &__topic {
+        width: 31.5%;
+        height: 19vw;
+        margin-bottom: 2.2vw;
+        border-radius: 1vw;
+        box-shadow: 0.2vw 0.2vw 0.1vw $shadow-color1;
+        &.new::before {
+          padding: 0vw 0.5vw;
+          height: 10%;
+          border-radius: 0.3vw;
+          right: 3.5%;
+          margin-top: 1vw;
+          font-size: 1vw;
+        }
+        & img {
+          border-radius: 1vw 1vw 0vw 0vw;
+        }
+        &__header {
+          &__text {
+            border-radius: 0 0 0 1vw;
+            padding: 1vw 1vw;
+            & h3 {
+              font-size: 1.5vw;
+            }
+            & p {
+              font-size: 1.2vw;
+            }
+          }
+          &__icon {
+            border-radius: 0 0 1vw 0;
+            &__container {
+              width: 50%;
+              height: 50%;
+              & .layer1 {
+                top: 0.3vw;
+                left: 0.55vw;
+                font-size: 2vw;
+              }
+              & .layer0 {
+                top: 0.3vw;
+                left: 0.55vw;
+                font-size: 2vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
